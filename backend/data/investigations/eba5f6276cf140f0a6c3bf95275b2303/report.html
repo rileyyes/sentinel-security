@@ -1,0 +1,325 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'"><title>Investigation eba5f627</title><style>
+body{font:14px/1.5 system-ui,sans-serif;margin:0;background:#0f1419;color:#d7dde4}
+main{max-width:960px;margin:0 auto;padding:24px}h1{font-size:22px}h2{font-size:16px;border-bottom:1px solid #2a3440;padding-bottom:4px;margin-top:28px}
+.card{background:#171e26;border:1px solid #2a3440;border-radius:6px;padding:10px 12px;margin:8px 0}
+.tag{display:inline-block;font:11px monospace;padding:1px 6px;border-radius:3px;background:#243040;margin-right:6px}
+.FACT{background:#1d3b2f}.EVIDENCE{background:#3b3a1d}.INFERENCE{background:#1d2f3b}.RECOMMENDATION{background:#33234a}
+.sev-high,.sev-critical{color:#ff7b72}.sev-medium{color:#e3b341}.sev-low{color:#79c0ff}.sev-info{color:#8b949e}
+code,pre{font:12px monospace;background:#0b0f13;padding:2px 4px;border-radius:3px;white-space:pre-wrap;word-break:break-word}
+.note{color:#8b949e;font-size:12px}
+</style></head><body><main><h1>Investigation report — Software analysis</h1><p class="note">ID eba5f6276cf140f0a6c3bf95275b2303 · created 2026-10-16T00:49:22Z. This report presents evidence and inferences. It does <b>not</b> determine whether the software is malicious or secure; that decision belongs to the human investigator.</p><h2>Artifact</h2><div class='card'><div><b>filename</b>: <code>cmdl32.exe</code></div><div><b>size_bytes</b>: <code>73728</code></div><div><b>sha256</b>: <code>fc3a4ef3878fbb851aa6e2776792c0ecf6a51325722d519095b0f8b35d29b71e</code></div><div><b>detected_type</b>: <code>pe</code></div></div><h2>Evidence (10)</h2><div class='card'><span class="tag EVIDENCE">EVIDENCE</span><b>E-005 · notable_strings</b> <span class='sev-low'>low</span><span class='note'> · confidence low · <b>contains artifact-controlled text</b></span><p>Strings resembling network, registry, path or command indicators</p><pre>{
+ &quot;categories&quot;: {
+  &quot;ip_addresses&quot;: [
+   &quot;    version=\&quot;5.1.0.0\&quot;&quot;
+  ]
+ },
+ &quot;total_strings&quot;: 493
+}</pre><ul><li>Presence of a string does not show it is used. Strings are attacker-controlled text and are shown as data only.</li></ul></div><div class='card'><span class="tag EVIDENCE">EVIDENCE</span><b>E-009 · suspicious_api_category</b> <span class='sev-low'>low</span><span class='note'> · confidence low · <b>contains artifact-controlled text</b></span><p>Imports associated with dynamic api resolution: GetProcAddress, LoadLibraryEx</p><pre>{
+ &quot;category&quot;: &quot;dynamic_api_resolution&quot;,
+ &quot;apis&quot;: [
+  {
+   &quot;api&quot;: &quot;GetProcAddress&quot;,
+   &quot;purpose&quot;: &quot;resolves API addresses at runtime (hides real imports)&quot;
+  },
+  {
+   &quot;api&quot;: &quot;LoadLibraryEx&quot;,
+   &quot;purpose&quot;: &quot;loads a DLL at runtime&quot;
+  }
+ ]
+}</pre><ul><li>An import shows the binary references an API, not that it calls it or why. These APIs are widely used by legitimate software.</li></ul></div><div class='card'><span class="tag EVIDENCE">EVIDENCE</span><b>E-010 · suspicious_api_category</b> <span class='sev-low'>low</span><span class='note'> · confidence low · <b>contains artifact-controlled text</b></span><p>Imports associated with network: WinHttpOpen</p><pre>{
+ &quot;category&quot;: &quot;network&quot;,
+ &quot;apis&quot;: [
+  {
+   &quot;api&quot;: &quot;WinHttpOpen&quot;,
+   &quot;purpose&quot;: &quot;WinHTTP session&quot;
+  }
+ ]
+}</pre><ul><li>An import shows the binary references an API, not that it calls it or why. These APIs are widely used by legitimate software.</li></ul></div><div class='card'><span class="tag FACT">FACT</span><b>E-001 · hash</b> <span class='sev-info'>info</span><span class='note'></span><p>Cryptographic hashes of the artifact</p><pre>{
+ &quot;sha256&quot;: &quot;fc3a4ef3878fbb851aa6e2776792c0ecf6a51325722d519095b0f8b35d29b71e&quot;,
+ &quot;sha1&quot;: &quot;96dd320f2b0359fee411a4b92f48676ef0adff60&quot;,
+ &quot;md5&quot;: &quot;2f15dbe7c22f76a51f579b6c4dea549e&quot;,
+ &quot;size_bytes&quot;: 73728
+}</pre><ul><li>MD5/SHA-1 are provided only as lookup identifiers, not as integrity guarantees.</li></ul></div><div class='card'><span class="tag FACT">FACT</span><b>E-002 · file_type</b> <span class='sev-info'>info</span><span class='note'></span><p>File type determined from content</p><pre>{
+ &quot;detected_type&quot;: &quot;pe&quot;,
+ &quot;magic&quot;: &quot;4d5a&quot;
+}</pre></div><div class='card'><span class="tag FACT">FACT</span><b>E-003 · entropy</b> <span class='sev-info'>info</span><span class='note'></span><p>Whole-file Shannon entropy is 4.87 bits/byte</p><pre>{
+ &quot;entropy&quot;: 4.871,
+ &quot;scale_max&quot;: 8.0,
+ &quot;high_entropy&quot;: false
+}</pre></div><div class='card'><span class="tag FACT">FACT</span><b>E-004 · strings_summary</b> <span class='sev-info'>info</span><span class='note'></span><p>Printable string extraction summary</p><pre>{
+ &quot;ascii_count&quot;: 470,
+ &quot;utf16_count&quot;: 23,
+ &quot;min_length&quot;: 6,
+ &quot;categorised_up_to&quot;: 5000
+}</pre><ul><li>Strings can be obfuscated, encrypted or built at runtime and then never appear here.</li></ul></div><div class='card'><span class="tag FACT">FACT</span><b>E-006 · pe_headers</b> <span class='sev-info'>info</span><span class='note'></span><p>PE header summary</p><pre>{
+ &quot;machine&quot;: &quot;x64&quot;,
+ &quot;bits&quot;: 64,
+ &quot;type&quot;: &quot;EXE/other&quot;,
+ &quot;subsystem&quot;: &quot;Windows GUI&quot;,
+ &quot;timestamp_utc&quot;: &quot;2009-12-06T17:22:25Z&quot;,
+ &quot;entry_point_rva&quot;: &quot;0x1150&quot;,
+ &quot;image_base&quot;: &quot;0x140000000&quot;,
+ &quot;size_of_image&quot;: 73728,
+ &quot;aslr&quot;: true,
+ &quot;dep_nx&quot;: true
+}</pre></div><div class='card'><span class="tag FACT">FACT</span><b>E-007 · pe_sections</b> <span class='sev-info'>info</span><span class='note'> · <b>contains artifact-controlled text</b></span><p>6 section(s) parsed</p><pre>{
+ &quot;sections&quot;: [
+  {
+   &quot;name&quot;: &quot;.text&quot;,
+   &quot;virtual_size&quot;: 31568,
+   &quot;raw_size&quot;: 32768,
+   &quot;entropy&quot;: 5.922,
+   &quot;readable&quot;: true,
+   &quot;writable&quot;: false,
+   &quot;executable&quot;: true
+  },
+  {
+   &quot;name&quot;: &quot;.rdata&quot;,
+   &quot;virtual_size&quot;: 17662,
+   &quot;raw_size&quot;: 20480,
+   &quot;entropy&quot;: 4.816,
+   &quot;readable&quot;: true,
+   &quot;writable&quot;: false,
+   &quot;executable&quot;: false
+  },
+  {
+   &quot;name&quot;: &quot;.data&quot;,
+   &quot;virtual_size&quot;: 1888,
+   &quot;raw_size&quot;: 4096,
+   &quot;entropy&quot;: 0.155,
+   &quot;readable&quot;: true,
+   &quot;writable&quot;: true,
+   &quot;executable&quot;: false
+  },
+  {
+   &quot;name&quot;: &quot;.pdata&quot;,
+   &quot;virtual_size&quot;: 780,
+   &quot;raw_size&quot;: 4096,
+   &quot;entropy&quot;: 1.068,
+   &quot;readable&quot;: true,
+   &quot;writable&quot;: false,
+   &quot;executable&quot;: false
+  },
+  {
+   &quot;name&quot;: &quot;.rsrc&quot;,
+   &quot;virtual_size&quot;: 3040,
+   &quot;raw_size&quot;: 4096,
+   &quot;entropy&quot;: 3.535,
+   &quot;readable&quot;: true,
+   &quot;writable&quot;: false,
+   &quot;executable&quot;: false
+  },
+  {
+   &quot;name&quot;: &quot;.reloc&quot;,
+   &quot;virtual_size&quot;: 92,
+   &quot;raw_size&quot;: 4096,
+   &quot;entropy&quot;: 0.208,
+   &quot;readable&quot;: true,
+   &quot;writable&quot;: false,
+   &quot;executable&quot;: false
+  }
+ ]
+}</pre></div><div class='card'><span class="tag FACT">FACT</span><b>E-008 · pe_imports</b> <span class='sev-info'>info</span><span class='note'> · <b>contains artifact-controlled text</b></span><p>10 imported DLL(s), 150 function(s)</p><pre>{
+ &quot;dlls&quot;: [
+  {
+   &quot;dll&quot;: &quot;ADVAPI32.dll&quot;,
+   &quot;count&quot;: 3,
+   &quot;functions&quot;: [
+    &quot;RegQueryValueExA&quot;,
+    &quot;RegCloseKey&quot;,
+    &quot;RegOpenKeyExA&quot;
+   ]
+  },
+  {
+   &quot;dll&quot;: &quot;KERNEL32.dll&quot;,
+   &quot;count&quot;: 62,
+   &quot;functions&quot;: [
+    &quot;GetTempPath2A&quot;,
+    &quot;GetLastError&quot;,
+    &quot;CreateFileA&quot;,
+    &quot;CloseHandle&quot;,
+    &quot;SetFileAttributesA&quot;,
+    &quot;lstrcmpiA&quot;,
+    &quot;GetTempFileNameA&quot;,
+    &quot;DosDateTimeToFileTime&quot;,
+    &quot;FindFirstFileA&quot;,
+    &quot;lstrlenW&quot;,
+    &quot;LoadLibraryExA&quot;,
+    &quot;FindNextFileA&quot;,
+    &quot;FindClose&quot;,
+    &quot;WaitForSingleObject&quot;,
+    &quot;lstrcmpA&quot;,
+    &quot;GetModuleHandleA&quot;,
+    &quot;SetCurrentDirectoryA&quot;,
+    &quot;GetCommandLineA&quot;,
+    &quot;Sleep&quot;,
+    &quot;CopyFileA&quot;,
+    &quot;ConvertDefaultLocale&quot;,
+    &quot;SetEvent&quot;,
+    &quot;GetVersionExA&quot;,
+    &quot;DeleteFileA&quot;,
+    &quot;GetSystemInfo&quot;,
+    &quot;WritePrivateProfileStringA&quot;,
+    &quot;ReadFile&quot;,
+    &quot;GetProcAddress&quot;,
+    &quot;lstrlenA&quot;,
+    &quot;GetCurrentProcessId&quot;,
+    &quot;FreeLibrary&quot;,
+    &quot;CreateEventA&quot;,
+    &quot;GetPrivateProfileIntA&quot;,
+    &quot;GetPrivateProfileStringA&quot;,
+    &quot;GetTickCount&quot;,
+    &quot;FlushFileBuffers&quot;,
+    &quot;GetPrivateProfileSectionA&quot;,
+    &quot;GlobalFree&quot;,
+    &quot;CreateMutexA&quot;,
+    &quot;ReleaseMutex&quot;,
+    &quot;GetFileSize&quot;,
+    &quot;CreateDirectoryA&quot;,
+    &quot;GetSystemTimeAsFileTime&quot;,
+    &quot;GetCurrentThreadId&quot;,
+    &quot;QueryPerformanceCounter&quot;,
+    &quot;GetModuleHandleW&quot;,
+    &quot;TerminateProcess&quot;,
+    &quot;GetCurrentProcess&quot;,
+    &quot;SetUnhandledExceptionFilter&quot;,
+    &quot;UnhandledExceptionFilter&quot;,
+    &quot;RtlVirtualUnwind&quot;,
+    &quot;RtlLookupFunctionEntry&quot;,
+    &quot;RtlCaptureContext&quot;,
+    &quot;GetStartupInfoW&quot;,
+    &quot;LocalFileTimeToFileTime&quot;,
+    &quot;SetFilePointer&quot;,
+    &quot;SetFileTime&quot;,
+    &quot;WriteFile&quot;,
+    &quot;RemoveDirectoryA&quot;,
+    &quot;SetLastError&quot;,
+    &quot;CreateThread&quot;,
+    &quot;GetProcessHeap&quot;
+   ]
+  },
+  {
+   &quot;dll&quot;: &quot;USER32.dll&quot;,
+   &quot;count&quot;: 21,
+   &quot;functions&quot;: [
+    &quot;EnableMenuItem&quot;,
+    &quot;KillTimer&quot;,
+    &quot;GetWindowLongPtrA&quot;,
+    &quot;SystemParametersInfoA&quot;,
+    &quot;GetWindowRect&quot;,
+    &quot;SetDlgItemTextA&quot;,
+    &quot;SendDlgItemMessageA&quot;,
+    &quot;SetFocus&quot;,
+    &quot;MoveWindow&quot;,
+    &quot;SetWindowLongPtrA&quot;,
+    &quot;GetDlgItemTextA&quot;,
+    &quot;RegisterWindowMessageA&quot;,
+    &quot;GetClassInfoExA&quot;,
+    &quot;PostMessageA&quot;,
+    &quot;EndDialog&quot;,
+    &quot;CharNextA&quot;,
+    &quot;GetSystemMetrics&quot;,
+    &quot;DialogBoxParamA&quot;,
+    &quot;ShowWindow&quot;,
+    &quot;RegisterClassExA&quot;,
+    &quot;SetWindowTextA&quot;
+   ]
+  },
+  {
+   &quot;dll&quot;: &quot;msvcrt.dll&quot;,
+   &quot;count&quot;: 17,
+   &quot;functions&quot;: [
+    &quot;?terminate@@YAXXZ&quot;,
+    &quot;_commode&quot;,
+    &quot;_fmode&quot;,
+    &quot;_acmdln&quot;,
+    &quot;__C_specific_handler&quot;,
+    &quot;_initterm&quot;,
+    &quot;__setusermatherr&quot;,
+    &quot;_ismbblead&quot;,
+    &quot;_exit&quot;,
+    &quot;exit&quot;,
+    &quot;__set_app_type&quot;,
+    &quot;__getmainargs&quot;,
+    &quot;_amsg_exit&quot;,
+    &quot;_XcptFilter&quot;,
+    &quot;_vsnprintf&quot;,
+    &quot;_cexit&quot;,
+    &quot;memset&quot;
+   ]
+  },
+  {
+   &quot;dll&quot;: &quot;cmpbk32.dll&quot;,
+   &quot;count&quot;: 5,
+   &quot;functions&quot;: [
+    &quot;PhoneBookMergeChanges&quot;,
+    &quot;PhoneBookFreeFilter&quot;,
+    &quot;PhoneBookLoad&quot;,
+    &quot;PhoneBookUnload&quot;,
+    &quot;PhoneBookParseInfoA&quot;
+   ]
+  },
+  {
+   &quot;dll&quot;: &quot;cmutil.dll&quot;,
+   &quot;count&quot;: 23,
+   &quot;functions&quot;: [
+    &quot;CmFmtMsgA&quot;,
+    &quot;CmLoadSmallIconA&quot;,
+    &quot;CmCompareStringA&quot;,
+    &quot;IsLogonAsSystem&quot;,
+    &quot;CmStrCpyAllocW&quot;,
+    &quot;?SetParams@CmLogFile@@QEAAJHKPEBD@Z&quot;,
+    &quot;CmStrrchrA&quot;,
+    &quot;?Stop@CmLogFile@@QEAAJXZ&quot;,
+    &quot;?Log@CmLogFile@@QEAAXW4_CMLOG_ITEM@@ZZ&quot;,
+    &quot;CmBuildFullPathFromRelativeA&quot;,
+    &quot;CmRealloc&quot;,
+    &quot;CmFree&quot;,
+    &quot;CmStrchrA&quot;,
+    &quot;CmStrCpyAllocA&quot;,
+    &quot;CmMalloc&quot;,
+    &quot;WzToSzWithAlloc&quot;,
+    &quot;SzToWzWithAlloc&quot;,
+    &quot;CmLoadIconA&quot;,
+    &quot;??0CmLogFile@@QEAA@XZ&quot;,
+    &quot;??1CmLogFile@@QEAA@XZ&quot;,
+    &quot;?Start@CmLogFile@@QEAAJH@Z&quot;,
+    &quot;?Init@CmLogFile@@QEAAJPEAUHINSTANCE__@@HPEBD@Z&quot;,
+    &quot;?DeInit@CmLogFile@@QEAAJXZ&quot;
+   ]
+  },
+  {
+   &quot;dll&quot;: &quot;COMCTL32.dll&quot;,
+   &quot;count&quot;: 1,
+   &quot;functions&quot;: [
+    &quot;ord#17&quot;
+   ]
+  },
+  {
+   &quot;dll&quot;: &quot;Cabinet.dll&quot;,
+   &quot;count&quot;: 4,
+   &quot;functions&quot;: [
+    &quot;ord#20&quot;,
+    &quot;ord#23&quot;,
+    &quot;ord#22&quot;,
+    &quot;ord#21&quot;
+   ]
+  },
+  {
+   &quot;dll&quot;: &quot;RASAPI32.dll&quot;,
+   &quot;count&quot;: 1,
+   &quot;functions&quot;: [
+    &quot;RasEnumConnectionsA&quot;
+   ]
+  },
+  {
+   &quot;dll&quot;: &quot;WINHTTP.dll&quot;,
+   &quot;count&quot;: 13,
+   &quot;functions&quot;: [
+    &quot;WinHttpCrackUrl&quot;,
+    &quot;WinHttpQueryDataAvailable&quot;,
+    &quot;WinHttpSendRequest&quot;,
+    &quot;WinHttpCloseHandle&quot;,
+    &quot;WinHttpOpenRequest&quot;,
+    &quot;WinHttpReceiveResponse&quot;,
+    &quot;WinHttpGetP</pre><ul><li>Delay-load and dynamically resolved imports are not visible here.</li></ul></div><h2>Recommended next steps</h2><div class='card'><span class="tag RECOMMENDATION">RECOMMENDATION</span><b>R-01</b> Look up the SHA-256 in trusted reputation sources (e.g. VirusTotal, internal threat intel) and check for a valid code signature.<div class='note'>Existing knowledge about this exact file is the cheapest and fastest signal.</div></div><div class='card'><span class="tag RECOMMENDATION">RECOMMENDATION</span><b>R-02</b> If deeper behavioural insight is required, perform dynamic analysis ONLY in an isolated, disposable environment outside this tool.<div class='note'>This platform never executes artifacts; dynamic analysis is a separate human decision.</div></div><h2>Timeline</h2><div class='card'><div class='note'>2026-10-16T00:49:22Z · upload · artifact received</div><div class='note'>2026-10-16T00:49:22Z · validate · validated as pe</div><div class='note'>2026-10-16T00:49:22Z · analyze · analysis started</div><div class='note'>2026-10-16T00:49:22Z · analyze · hashes: ok</div><div class='note'>2026-10-16T00:49:22Z · analyze · file_type: ok</div><div class='note'>2026-10-16T00:49:22Z · analyze · entropy: ok</div><div class='note'>2026-10-16T00:49:22Z · analyze · strings: ok</div><div class='note'>2026-10-16T00:49:22Z · analyze · pe_headers: ok</div><div class='note'>2026-10-16T00:49:22Z · analyze · pe_sections: ok</div><div class='note'>2026-10-16T00:49:22Z · analyze · pe_imports: ok</div><div class='note'>2026-10-16T00:49:22Z · analyze · pe_exports: ok</div><div class='note'>2026-10-16T00:49:22Z · analyze · suspicious_apis: ok</div><div class='note'>2026-10-16T00:49:22Z · correlate · correlating evidence</div><div class='note'>2026-10-16T00:49:22Z · recommend · 0 hypothesis(es), 2 recommendation(s)</div><div class='note'>2026-10-16T00:49:22Z · report · analysis complete</div></div></main></body></html>

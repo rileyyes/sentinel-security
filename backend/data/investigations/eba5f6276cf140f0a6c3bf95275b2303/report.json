@@ -1,0 +1,655 @@
+{
+  "id": "eba5f6276cf140f0a6c3bf95275b2303",
+  "mode": "software",
+  "created_at": "2026-10-16T00:49:22Z",
+  "artifact": {
+    "filename": "cmdl32.exe",
+    "size_bytes": 73728,
+    "sha256": "fc3a4ef3878fbb851aa6e2776792c0ecf6a51325722d519095b0f8b35d29b71e",
+    "detected_type": "pe"
+  },
+  "analyzer_results": [
+    {
+      "analyzer": "hashes",
+      "status": "ok",
+      "evidence_ids": [
+        "E-001"
+      ],
+      "error": null
+    },
+    {
+      "analyzer": "file_type",
+      "status": "ok",
+      "evidence_ids": [
+        "E-002"
+      ],
+      "error": null
+    },
+    {
+      "analyzer": "entropy",
+      "status": "ok",
+      "evidence_ids": [
+        "E-003"
+      ],
+      "error": null
+    },
+    {
+      "analyzer": "strings",
+      "status": "ok",
+      "evidence_ids": [
+        "E-004",
+        "E-005"
+      ],
+      "error": null
+    },
+    {
+      "analyzer": "pe_headers",
+      "status": "ok",
+      "evidence_ids": [
+        "E-006"
+      ],
+      "error": null
+    },
+    {
+      "analyzer": "pe_sections",
+      "status": "ok",
+      "evidence_ids": [
+        "E-007"
+      ],
+      "error": null
+    },
+    {
+      "analyzer": "pe_imports",
+      "status": "ok",
+      "evidence_ids": [
+        "E-008"
+      ],
+      "error": null
+    },
+    {
+      "analyzer": "pe_exports",
+      "status": "ok",
+      "evidence_ids": [],
+      "error": null
+    },
+    {
+      "analyzer": "suspicious_apis",
+      "status": "ok",
+      "evidence_ids": [
+        "E-009",
+        "E-010"
+      ],
+      "error": null
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E-001",
+      "analyzer": "hashes",
+      "evidence_type": "hash",
+      "description": "Cryptographic hashes of the artifact",
+      "data": {
+        "sha256": "fc3a4ef3878fbb851aa6e2776792c0ecf6a51325722d519095b0f8b35d29b71e",
+        "sha1": "96dd320f2b0359fee411a4b92f48676ef0adff60",
+        "md5": "2f15dbe7c22f76a51f579b6c4dea549e",
+        "size_bytes": 73728
+      },
+      "kind": "FACT",
+      "severity": "info",
+      "confidence": null,
+      "location": null,
+      "limitations": [
+        "MD5/SHA-1 are provided only as lookup identifiers, not as integrity guarantees."
+      ],
+      "untrusted_content": false
+    },
+    {
+      "id": "E-002",
+      "analyzer": "file_type",
+      "evidence_type": "file_type",
+      "description": "File type determined from content",
+      "data": {
+        "detected_type": "pe",
+        "magic": "4d5a"
+      },
+      "kind": "FACT",
+      "severity": "info",
+      "confidence": null,
+      "location": null,
+      "limitations": [],
+      "untrusted_content": false
+    },
+    {
+      "id": "E-003",
+      "analyzer": "entropy",
+      "evidence_type": "entropy",
+      "description": "Whole-file Shannon entropy is 4.87 bits/byte",
+      "data": {
+        "entropy": 4.871,
+        "scale_max": 8.0,
+        "high_entropy": false
+      },
+      "kind": "FACT",
+      "severity": "info",
+      "confidence": null,
+      "location": null,
+      "limitations": [],
+      "untrusted_content": false
+    },
+    {
+      "id": "E-004",
+      "analyzer": "strings",
+      "evidence_type": "strings_summary",
+      "description": "Printable string extraction summary",
+      "data": {
+        "ascii_count": 470,
+        "utf16_count": 23,
+        "min_length": 6,
+        "categorised_up_to": 5000
+      },
+      "kind": "FACT",
+      "severity": "info",
+      "confidence": null,
+      "location": null,
+      "limitations": [
+        "Strings can be obfuscated, encrypted or built at runtime and then never appear here."
+      ],
+      "untrusted_content": false
+    },
+    {
+      "id": "E-005",
+      "analyzer": "strings",
+      "evidence_type": "notable_strings",
+      "description": "Strings resembling network, registry, path or command indicators",
+      "data": {
+        "categories": {
+          "ip_addresses": [
+            "    version=\"5.1.0.0\""
+          ]
+        },
+        "total_strings": 493
+      },
+      "kind": "EVIDENCE",
+      "severity": "low",
+      "confidence": "low",
+      "location": null,
+      "limitations": [
+        "Presence of a string does not show it is used. Strings are attacker-controlled text and are shown as data only."
+      ],
+      "untrusted_content": true
+    },
+    {
+      "id": "E-006",
+      "analyzer": "pe_headers",
+      "evidence_type": "pe_headers",
+      "description": "PE header summary",
+      "data": {
+        "machine": "x64",
+        "bits": 64,
+        "type": "EXE/other",
+        "subsystem": "Windows GUI",
+        "timestamp_utc": "2009-12-06T17:22:25Z",
+        "entry_point_rva": "0x1150",
+        "image_base": "0x140000000",
+        "size_of_image": 73728,
+        "aslr": true,
+        "dep_nx": true
+      },
+      "kind": "FACT",
+      "severity": "info",
+      "confidence": null,
+      "location": "PE header",
+      "limitations": [],
+      "untrusted_content": false
+    },
+    {
+      "id": "E-007",
+      "analyzer": "pe_sections",
+      "evidence_type": "pe_sections",
+      "description": "6 section(s) parsed",
+      "data": {
+        "sections": [
+          {
+            "name": ".text",
+            "virtual_size": 31568,
+            "raw_size": 32768,
+            "entropy": 5.922,
+            "readable": true,
+            "writable": false,
+            "executable": true
+          },
+          {
+            "name": ".rdata",
+            "virtual_size": 17662,
+            "raw_size": 20480,
+            "entropy": 4.816,
+            "readable": true,
+            "writable": false,
+            "executable": false
+          },
+          {
+            "name": ".data",
+            "virtual_size": 1888,
+            "raw_size": 4096,
+            "entropy": 0.155,
+            "readable": true,
+            "writable": true,
+            "executable": false
+          },
+          {
+            "name": ".pdata",
+            "virtual_size": 780,
+            "raw_size": 4096,
+            "entropy": 1.068,
+            "readable": true,
+            "writable": false,
+            "executable": false
+          },
+          {
+            "name": ".rsrc",
+            "virtual_size": 3040,
+            "raw_size": 4096,
+            "entropy": 3.535,
+            "readable": true,
+            "writable": false,
+            "executable": false
+          },
+          {
+            "name": ".reloc",
+            "virtual_size": 92,
+            "raw_size": 4096,
+            "entropy": 0.208,
+            "readable": true,
+            "writable": false,
+            "executable": false
+          }
+        ]
+      },
+      "kind": "FACT",
+      "severity": "info",
+      "confidence": null,
+      "location": "section table",
+      "limitations": [],
+      "untrusted_content": true
+    },
+    {
+      "id": "E-008",
+      "analyzer": "pe_imports",
+      "evidence_type": "pe_imports",
+      "description": "10 imported DLL(s), 150 function(s)",
+      "data": {
+        "dlls": [
+          {
+            "dll": "ADVAPI32.dll",
+            "count": 3,
+            "functions": [
+              "RegQueryValueExA",
+              "RegCloseKey",
+              "RegOpenKeyExA"
+            ]
+          },
+          {
+            "dll": "KERNEL32.dll",
+            "count": 62,
+            "functions": [
+              "GetTempPath2A",
+              "GetLastError",
+              "CreateFileA",
+              "CloseHandle",
+              "SetFileAttributesA",
+              "lstrcmpiA",
+              "GetTempFileNameA",
+              "DosDateTimeToFileTime",
+              "FindFirstFileA",
+              "lstrlenW",
+              "LoadLibraryExA",
+              "FindNextFileA",
+              "FindClose",
+              "WaitForSingleObject",
+              "lstrcmpA",
+              "GetModuleHandleA",
+              "SetCurrentDirectoryA",
+              "GetCommandLineA",
+              "Sleep",
+              "CopyFileA",
+              "ConvertDefaultLocale",
+              "SetEvent",
+              "GetVersionExA",
+              "DeleteFileA",
+              "GetSystemInfo",
+              "WritePrivateProfileStringA",
+              "ReadFile",
+              "GetProcAddress",
+              "lstrlenA",
+              "GetCurrentProcessId",
+              "FreeLibrary",
+              "CreateEventA",
+              "GetPrivateProfileIntA",
+              "GetPrivateProfileStringA",
+              "GetTickCount",
+              "FlushFileBuffers",
+              "GetPrivateProfileSectionA",
+              "GlobalFree",
+              "CreateMutexA",
+              "ReleaseMutex",
+              "GetFileSize",
+              "CreateDirectoryA",
+              "GetSystemTimeAsFileTime",
+              "GetCurrentThreadId",
+              "QueryPerformanceCounter",
+              "GetModuleHandleW",
+              "TerminateProcess",
+              "GetCurrentProcess",
+              "SetUnhandledExceptionFilter",
+              "UnhandledExceptionFilter",
+              "RtlVirtualUnwind",
+              "RtlLookupFunctionEntry",
+              "RtlCaptureContext",
+              "GetStartupInfoW",
+              "LocalFileTimeToFileTime",
+              "SetFilePointer",
+              "SetFileTime",
+              "WriteFile",
+              "RemoveDirectoryA",
+              "SetLastError",
+              "CreateThread",
+              "GetProcessHeap"
+            ]
+          },
+          {
+            "dll": "USER32.dll",
+            "count": 21,
+            "functions": [
+              "EnableMenuItem",
+              "KillTimer",
+              "GetWindowLongPtrA",
+              "SystemParametersInfoA",
+              "GetWindowRect",
+              "SetDlgItemTextA",
+              "SendDlgItemMessageA",
+              "SetFocus",
+              "MoveWindow",
+              "SetWindowLongPtrA",
+              "GetDlgItemTextA",
+              "RegisterWindowMessageA",
+              "GetClassInfoExA",
+              "PostMessageA",
+              "EndDialog",
+              "CharNextA",
+              "GetSystemMetrics",
+              "DialogBoxParamA",
+              "ShowWindow",
+              "RegisterClassExA",
+              "SetWindowTextA"
+            ]
+          },
+          {
+            "dll": "msvcrt.dll",
+            "count": 17,
+            "functions": [
+              "?terminate@@YAXXZ",
+              "_commode",
+              "_fmode",
+              "_acmdln",
+              "__C_specific_handler",
+              "_initterm",
+              "__setusermatherr",
+              "_ismbblead",
+              "_exit",
+              "exit",
+              "__set_app_type",
+              "__getmainargs",
+              "_amsg_exit",
+              "_XcptFilter",
+              "_vsnprintf",
+              "_cexit",
+              "memset"
+            ]
+          },
+          {
+            "dll": "cmpbk32.dll",
+            "count": 5,
+            "functions": [
+              "PhoneBookMergeChanges",
+              "PhoneBookFreeFilter",
+              "PhoneBookLoad",
+              "PhoneBookUnload",
+              "PhoneBookParseInfoA"
+            ]
+          },
+          {
+            "dll": "cmutil.dll",
+            "count": 23,
+            "functions": [
+              "CmFmtMsgA",
+              "CmLoadSmallIconA",
+              "CmCompareStringA",
+              "IsLogonAsSystem",
+              "CmStrCpyAllocW",
+              "?SetParams@CmLogFile@@QEAAJHKPEBD@Z",
+              "CmStrrchrA",
+              "?Stop@CmLogFile@@QEAAJXZ",
+              "?Log@CmLogFile@@QEAAXW4_CMLOG_ITEM@@ZZ",
+              "CmBuildFullPathFromRelativeA",
+              "CmRealloc",
+              "CmFree",
+              "CmStrchrA",
+              "CmStrCpyAllocA",
+              "CmMalloc",
+              "WzToSzWithAlloc",
+              "SzToWzWithAlloc",
+              "CmLoadIconA",
+              "??0CmLogFile@@QEAA@XZ",
+              "??1CmLogFile@@QEAA@XZ",
+              "?Start@CmLogFile@@QEAAJH@Z",
+              "?Init@CmLogFile@@QEAAJPEAUHINSTANCE__@@HPEBD@Z",
+              "?DeInit@CmLogFile@@QEAAJXZ"
+            ]
+          },
+          {
+            "dll": "COMCTL32.dll",
+            "count": 1,
+            "functions": [
+              "ord#17"
+            ]
+          },
+          {
+            "dll": "Cabinet.dll",
+            "count": 4,
+            "functions": [
+              "ord#20",
+              "ord#23",
+              "ord#22",
+              "ord#21"
+            ]
+          },
+          {
+            "dll": "RASAPI32.dll",
+            "count": 1,
+            "functions": [
+              "RasEnumConnectionsA"
+            ]
+          },
+          {
+            "dll": "WINHTTP.dll",
+            "count": 13,
+            "functions": [
+              "WinHttpCrackUrl",
+              "WinHttpQueryDataAvailable",
+              "WinHttpSendRequest",
+              "WinHttpCloseHandle",
+              "WinHttpOpenRequest",
+              "WinHttpReceiveResponse",
+              "WinHttpGetProxyForUrl",
+              "WinHttpGetDefaultProxyConfiguration",
+              "WinHttpReadData",
+              "WinHttpQueryHeaders",
+              "WinHttpConnect",
+              "WinHttpGetIEProxyConfigForCurrentUser",
+              "WinHttpOpen"
+            ]
+          }
+        ],
+        "total_functions": 150
+      },
+      "kind": "FACT",
+      "severity": "info",
+      "confidence": null,
+      "location": "import table",
+      "limitations": [
+        "Delay-load and dynamically resolved imports are not visible here."
+      ],
+      "untrusted_content": true
+    },
+    {
+      "id": "E-009",
+      "analyzer": "suspicious_apis",
+      "evidence_type": "suspicious_api_category",
+      "description": "Imports associated with dynamic api resolution: GetProcAddress, LoadLibraryEx",
+      "data": {
+        "category": "dynamic_api_resolution",
+        "apis": [
+          {
+            "api": "GetProcAddress",
+            "purpose": "resolves API addresses at runtime (hides real imports)"
+          },
+          {
+            "api": "LoadLibraryEx",
+            "purpose": "loads a DLL at runtime"
+          }
+        ]
+      },
+      "kind": "EVIDENCE",
+      "severity": "low",
+      "confidence": "low",
+      "location": "import table",
+      "limitations": [
+        "An import shows the binary references an API, not that it calls it or why. These APIs are widely used by legitimate software."
+      ],
+      "untrusted_content": true
+    },
+    {
+      "id": "E-010",
+      "analyzer": "suspicious_apis",
+      "evidence_type": "suspicious_api_category",
+      "description": "Imports associated with network: WinHttpOpen",
+      "data": {
+        "category": "network",
+        "apis": [
+          {
+            "api": "WinHttpOpen",
+            "purpose": "WinHTTP session"
+          }
+        ]
+      },
+      "kind": "EVIDENCE",
+      "severity": "low",
+      "confidence": "low",
+      "location": "import table",
+      "limitations": [
+        "An import shows the binary references an API, not that it calls it or why. These APIs are widely used by legitimate software."
+      ],
+      "untrusted_content": true
+    }
+  ],
+  "findings": [],
+  "hypotheses": [],
+  "recommendations": [
+    {
+      "id": "R-01",
+      "action": "Look up the SHA-256 in trusted reputation sources (e.g. VirusTotal, internal threat intel) and check for a valid code signature.",
+      "rationale": "Existing knowledge about this exact file is the cheapest and fastest signal.",
+      "related": [
+        "E-001"
+      ],
+      "kind": "RECOMMENDATION"
+    },
+    {
+      "id": "R-02",
+      "action": "If deeper behavioural insight is required, perform dynamic analysis ONLY in an isolated, disposable environment outside this tool.",
+      "rationale": "This platform never executes artifacts; dynamic analysis is a separate human decision.",
+      "related": [],
+      "kind": "RECOMMENDATION"
+    }
+  ],
+  "timeline": [
+    {
+      "timestamp": "2026-10-16T00:49:22Z",
+      "stage": "upload",
+      "message": "artifact received"
+    },
+    {
+      "timestamp": "2026-10-16T00:49:22Z",
+      "stage": "validate",
+      "message": "validated as pe"
+    },
+    {
+      "timestamp": "2026-10-16T00:49:22Z",
+      "stage": "analyze",
+      "message": "analysis started"
+    },
+    {
+      "timestamp": "2026-10-16T00:49:22Z",
+      "stage": "analyze",
+      "message": "hashes: ok"
+    },
+    {
+      "timestamp": "2026-10-16T00:49:22Z",
+      "stage": "analyze",
+      "message": "file_type: ok"
+    },
+    {
+      "timestamp": "2026-10-16T00:49:22Z",
+      "stage": "analyze",
+      "message": "entropy: ok"
+    },
+    {
+      "timestamp": "2026-10-16T00:49:22Z",
+      "stage": "analyze",
+      "message": "strings: ok"
+    },
+    {
+      "timestamp": "2026-10-16T00:49:22Z",
+      "stage": "analyze",
+      "message": "pe_headers: ok"
+    },
+    {
+      "timestamp": "2026-10-16T00:49:22Z",
+      "stage": "analyze",
+      "message": "pe_sections: ok"
+    },
+    {
+      "timestamp": "2026-10-16T00:49:22Z",
+      "stage": "analyze",
+      "message": "pe_imports: ok"
+    },
+    {
+      "timestamp": "2026-10-16T00:49:22Z",
+      "stage": "analyze",
+      "message": "pe_exports: ok"
+    },
+    {
+      "timestamp": "2026-10-16T00:49:22Z",
+      "stage": "analyze",
+      "message": "suspicious_apis: ok"
+    },
+    {
+      "timestamp": "2026-10-16T00:49:22Z",
+      "stage": "correlate",
+      "message": "correlating evidence"
+    },
+    {
+      "timestamp": "2026-10-16T00:49:22Z",
+      "stage": "recommend",
+      "message": "0 hypothesis(es), 2 recommendation(s)"
+    },
+    {
+      "timestamp": "2026-10-16T00:49:22Z",
+      "stage": "report",
+      "message": "analysis complete"
+    }
+  ],
+  "warnings": [],
+  "errors": [],
+  "schema_version": 1
+}

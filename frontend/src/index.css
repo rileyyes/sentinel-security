@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body { font-feature-settings: "tnum"; }
+.card { @apply bg-base-800 border border-base-600 rounded-lg p-4; }
+.badge { @apply inline-block text-[11px] font-mono px-2 py-0.5 rounded border; }
+.sev-critical, .sev-high { @apply border-danger/40 text-danger bg-danger/10; }
+.sev-medium { @apply border-warn/40 text-warn bg-warn/10; }
+.sev-low { @apply border-info/40 text-info bg-info/10; }
+.sev-info { @apply border-muted/40 text-muted bg-muted/10; }
+.kind-FACT { @apply border-emerald-500/40 text-emerald-400 bg-emerald-500/10; }
+.kind-EVIDENCE { @apply border-warn/40 text-warn bg-warn/10; }
+.kind-INFERENCE { @apply border-info/40 text-info bg-info/10; }
+.kind-RECOMMENDATION { @apply border-purple-400/40 text-purple-300 bg-purple-400/10; }
+.btn { @apply px-3 py-1.5 rounded-md bg-accent hover:bg-accent-dim text-white text-sm font-medium transition-colors disabled:opacity-40 disabled:cursor-not-allowed; }
+.btn-ghost { @apply px-3 py-1.5 rounded-md border border-base-600 hover:bg-base-700 text-sm text-slate-300 transition-colors; }

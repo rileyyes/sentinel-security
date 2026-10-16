@@ -1,0 +1,34 @@
+services:
+  api:
+    build: ./backend
+    ports: ["8000:8000"]
+    environment:
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
+      - SENTINEL_DATA_DIR=/data
+      - SENTINEL_CORS_ORIGINS=http://localhost:5173
+    volumes:
+      - sentinel-data:/data
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt: ["no-new-privileges:true"]
+    cap_drop: ["ALL"]
+    mem_limit: 1g
+    pids_limit: 200
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request;urllib.request.urlopen('http://localhost:8000/api/health',timeout=2)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  web:
+    build: ./frontend
+    ports: ["5173:8080"]
+    depends_on: [api]
+    read_only: true
+    tmpfs: ["/var/cache/nginx", "/var/run"]
+    security_opt: ["no-new-privileges:true"]
+    cap_drop: ["ALL"]
+
+volumes:
+  sentinel-data:

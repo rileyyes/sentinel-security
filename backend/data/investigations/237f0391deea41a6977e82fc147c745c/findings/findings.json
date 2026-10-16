@@ -1,0 +1,87 @@
+[
+  {
+    "id": "F-001",
+    "rule_id": "PY-SQLI-001",
+    "category": "SQL injection",
+    "severity": "high",
+    "file": "chordforge/chordforge/db.py",
+    "line": 243,
+    "evidence": "cur = c.execute(f\"UPDATE projects SET {sets} WHERE id=? AND user_id=?\", (*vals, project_id, user_id))",
+    "explanation": "A SQL string is assembled with f-strings, %, +, or .format() before being executed.",
+    "impact": "Crafted input can change the query's meaning, exposing or modifying data.",
+    "remediation": "Use parameterised queries (cursor.execute(sql, params)) or an ORM's bound parameters.",
+    "confidence": "medium",
+    "limitations": [
+      "Identifier interpolation from a fixed allow-list can be safe; review the source of each interpolated value."
+    ],
+    "kind": "INFERENCE"
+  },
+  {
+    "id": "F-002",
+    "rule_id": "PY-SQLI-001",
+    "category": "SQL injection",
+    "severity": "high",
+    "file": "chordforge/chordforge/db.py",
+    "line": 312,
+    "evidence": "cur = c.execute(f\"UPDATE clips SET {sets} WHERE id=? AND project_id=? AND user_id=?\",",
+    "explanation": "A SQL string is assembled with f-strings, %, +, or .format() before being executed.",
+    "impact": "Crafted input can change the query's meaning, exposing or modifying data.",
+    "remediation": "Use parameterised queries (cursor.execute(sql, params)) or an ORM's bound parameters.",
+    "confidence": "medium",
+    "limitations": [
+      "Identifier interpolation from a fixed allow-list can be safe; review the source of each interpolated value."
+    ],
+    "kind": "INFERENCE"
+  },
+  {
+    "id": "F-003",
+    "rule_id": "PY-SECRET-001",
+    "category": "Hardcoded secret",
+    "severity": "high",
+    "file": "chordforge/tests/test_api.py",
+    "line": 79,
+    "evidence": "'password': 'wron\u2026[redacted, 15 chars]'",
+    "explanation": "A credential-like value is written directly in source or configuration.",
+    "impact": "Anyone with repository or artifact access gains the credential, and it persists in version history.",
+    "remediation": "Load secrets from environment/secret manager, rotate the exposed value, and purge it from history.",
+    "confidence": "medium",
+    "limitations": [
+      "Name-based detection can flag test values or placeholders; values are redacted in this report."
+    ],
+    "kind": "INFERENCE"
+  },
+  {
+    "id": "F-004",
+    "rule_id": "PY-SECRET-001",
+    "category": "Hardcoded secret",
+    "severity": "high",
+    "file": "chordforge/tests/test_api.py",
+    "line": 87,
+    "evidence": "'password': 'shor\u2026[redacted, 5 chars]'",
+    "explanation": "A credential-like value is written directly in source or configuration.",
+    "impact": "Anyone with repository or artifact access gains the credential, and it persists in version history.",
+    "remediation": "Load secrets from environment/secret manager, rotate the exposed value, and purge it from history.",
+    "confidence": "medium",
+    "limitations": [
+      "Name-based detection can flag test values or placeholders; values are redacted in this report."
+    ],
+    "kind": "INFERENCE"
+  },
+  {
+    "id": "F-005",
+    "rule_id": "PY-SECRET-001",
+    "category": "Hardcoded secret",
+    "severity": "high",
+    "file": "chordforge/tests/test_api.py",
+    "line": 115,
+    "evidence": "'password': 'wron\u2026[redacted, 15 chars]'",
+    "explanation": "A credential-like value is written directly in source or configuration.",
+    "impact": "Anyone with repository or artifact access gains the credential, and it persists in version history.",
+    "remediation": "Load secrets from environment/secret manager, rotate the exposed value, and purge it from history.",
+    "confidence": "medium",
+    "limitations": [
+      "Name-based detection can flag test values or placeholders; values are redacted in this report."
+    ],
+    "kind": "INFERENCE"
+  }
+]

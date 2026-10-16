@@ -1,0 +1,17 @@
+{
+  "id": "eba5f6276cf140f0a6c3bf95275b2303",
+  "mode": "software",
+  "created_at": "2026-10-16T00:49:22Z",
+  "schema_version": 1,
+  "artifact": {
+    "filename": "cmdl32.exe",
+    "sha256": "fc3a4ef3878fbb851aa6e2776792c0ecf6a51325722d519095b0f8b35d29b71e",
+    "size_bytes": 73728
+  },
+  "counts": {
+    "evidence": 10,
+    "findings": 0,
+    "hypotheses": 0,
+    "recommendations": 2
+  }
+}

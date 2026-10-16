@@ -1,0 +1,74 @@
+[
+  {
+    "analyzer": "hashes",
+    "status": "ok",
+    "evidence_ids": [
+      "E-001"
+    ],
+    "error": null
+  },
+  {
+    "analyzer": "file_type",
+    "status": "ok",
+    "evidence_ids": [
+      "E-002"
+    ],
+    "error": null
+  },
+  {
+    "analyzer": "entropy",
+    "status": "ok",
+    "evidence_ids": [
+      "E-003"
+    ],
+    "error": null
+  },
+  {
+    "analyzer": "strings",
+    "status": "ok",
+    "evidence_ids": [
+      "E-004",
+      "E-005"
+    ],
+    "error": null
+  },
+  {
+    "analyzer": "pe_headers",
+    "status": "ok",
+    "evidence_ids": [
+      "E-006"
+    ],
+    "error": null
+  },
+  {
+    "analyzer": "pe_sections",
+    "status": "ok",
+    "evidence_ids": [
+      "E-007"
+    ],
+    "error": null
+  },
+  {
+    "analyzer": "pe_imports",
+    "status": "ok",
+    "evidence_ids": [
+      "E-008"
+    ],
+    "error": null
+  },
+  {
+    "analyzer": "pe_exports",
+    "status": "ok",
+    "evidence_ids": [],
+    "error": null
+  },
+  {
+    "analyzer": "suspicious_apis",
+    "status": "ok",
+    "evidence_ids": [
+      "E-009",
+      "E-010"
+    ],
+    "error": null
+  }
+]

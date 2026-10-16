@@ -1,0 +1,64 @@
+{
+  "id": "c8c81e9fdcc54833b99514370e445af6",
+  "mode": "code",
+  "created_at": "2026-10-16T00:42:27Z",
+  "artifact": {
+    "files_scanned": 2,
+    "filename": "easybeat-studio.zip",
+    "size_bytes": 329331,
+    "sha256": "d3b590d7aba90a0ad384e47815b9de11b9994feee96c6ecd59e4e9167e7bd448",
+    "detected_type": "zip"
+  },
+  "analyzer_results": [
+    {
+      "analyzer": "python_scanner",
+      "status": "ok",
+      "evidence_ids": [],
+      "error": null
+    }
+  ],
+  "evidence": [],
+  "findings": [],
+  "hypotheses": [],
+  "recommendations": [],
+  "timeline": [
+    {
+      "timestamp": "2026-10-16T00:42:27Z",
+      "stage": "upload",
+      "message": "artifact received"
+    },
+    {
+      "timestamp": "2026-10-16T00:42:27Z",
+      "stage": "validate",
+      "message": "validated as zip"
+    },
+    {
+      "timestamp": "2026-10-16T00:42:27Z",
+      "stage": "validate",
+      "message": "extracted 2 source file(s) safely"
+    },
+    {
+      "timestamp": "2026-10-16T00:42:27Z",
+      "stage": "analyze",
+      "message": "analysis started"
+    },
+    {
+      "timestamp": "2026-10-16T00:42:27Z",
+      "stage": "analyze",
+      "message": "scanned 2 file(s), 0 finding(s)"
+    },
+    {
+      "timestamp": "2026-10-16T00:42:27Z",
+      "stage": "recommend",
+      "message": "0 recommendation(s)"
+    },
+    {
+      "timestamp": "2026-10-16T00:42:27Z",
+      "stage": "report",
+      "message": "analysis complete"
+    }
+  ],
+  "warnings": [],
+  "errors": [],
+  "schema_version": 1
+}
